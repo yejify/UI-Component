@@ -16,7 +16,7 @@ const AccordionItem = ({
   toggle: () => void;
 }) => {
   return (
-    <li className={cx('item', 'item2', { current })} key={id}>
+    <li className={cx('item', 'item3', { current })} key={id}>
       <div className={cx('tab')} onClick={() => toggle}>
         {title}
       </div>
