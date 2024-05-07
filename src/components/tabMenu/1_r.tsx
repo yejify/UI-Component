@@ -5,13 +5,11 @@ import data from './data';
 const TabItem = ({
   id,
   title,
-  description,
   current,
   toggle,
 }: {
   id: string;
   title: string;
-  description: string;
   current: boolean;
   toggle: () => void;
 }) => {
