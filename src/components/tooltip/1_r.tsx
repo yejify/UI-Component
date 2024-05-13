@@ -30,7 +30,7 @@ const Tooltip = ({
 
   return (
     <div className={cx('container')}>
-      <button className={cx('trigger')} onClick={() => toggle((p) => !p)}>
+      <button className={cx('trigger')} onClick={handleClick}>
         {title}
       </button>
       {isOpen && (
