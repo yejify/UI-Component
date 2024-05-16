@@ -1,10 +1,15 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import cx from './cx';
 import data from './data';
-import ViewportContextProvider, { useViewportRect } from './viewportContext';
+import ViewportContextProvider from '../../context/viewportContext';
+import useStyleInView from './useStyleInView';
 
-type style = Partial<Record<'left' | 'right' | 'top' | 'bottom', number>>;
-
+const tooltipPosition = {
+  top: '100%',
+  bottom: 20,
+  left: 0,
+  rigth: 0,
+};
 const Tooltip4 = () => {
   const Tooltip = ({
     id,
@@ -15,30 +20,10 @@ const Tooltip4 = () => {
     title: string;
     description: string;
   }) => {
-    const viewportRect = useViewportRect();
     const wrapperRef = useRef<HTMLDetailsElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
-    const [style, setStyle] = useState<style>({});
+    const style = useStyleInView(wrapperRef, targetRef, tooltipPosition);
 
-    useLayoutEffect(() => {
-      if (!wrapperRef.current || !targetRef.current) return;
-      const wrapperRect = wrapperRef.current?.getBoundingClientRect();
-      const targetRect = targetRef.current?.getBoundingClientRect();
-      const verticalKey =
-        wrapperRect.bottom + targetRect.height < viewportRect.height
-          ? 'top'
-          : 'bottom';
-      const horizontalKey =
-        wrapperRect.right + targetRect.width < viewportRect.width
-          ? 'left'
-          : 'right';
-      setStyle({
-        [verticalKey]: 0,
-        [verticalKey === 'top' ? 'bottom' : 'top']: 'auto',
-        [horizontalKey]: 0,
-        [horizontalKey === 'left' ? 'right' : 'left']: 'auto',
-      });
-    }, [viewportRect]);
     return (
       <details className={cx('details')} data-tooltip={id}>
         <summary className={cx('summary')} data-tooltip-summary>
