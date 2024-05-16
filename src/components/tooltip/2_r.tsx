@@ -1,5 +1,7 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
-import SingleOpenContextProvider, { useSingleOpen } from './singleOpenContext';
+import SingleOpenContextProvider, {
+  useSingleOpen,
+} from '../../context/singleOpenContext';
 import data from './data';
 import cx from './cx';
 const Tooltip = ({
