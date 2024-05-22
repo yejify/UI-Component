@@ -18,7 +18,7 @@ const measureLines = (elem: HTMLTextAreaElement, val: string) => {
       1
     );
   }, 0);
-  return measureLines;
+  return measuredLines;
 };
 const TextBox1 = () => {
   const [text, setText] = useState('');
@@ -34,7 +34,7 @@ const TextBox1 = () => {
   return (
     <>
       <h3>
-        #1<sub>controlled</sub>
+        #1<sub>controlled. canvas</sub>
       </h3>
       <div className={cx('container')}>
         <textarea
