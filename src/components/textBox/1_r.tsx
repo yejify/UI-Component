@@ -23,6 +23,7 @@ const TextBox1 = () => {
           className={cx('textarea')}
           onChange={handleChange}
           rows={lines}
+          value={text}
         />
       </div>
     </>
