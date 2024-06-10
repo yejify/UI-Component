@@ -1,5 +1,8 @@
 import Accordions from './components/accordion';
+import LineClamps from './components/lineClamp';
 import TabMenus from './components/tabMenu';
+import TextBoxes from './components/textBox';
+import Tooltips from './components/tooltip';
 
 export const routePaths = [
   '/',
@@ -88,19 +91,19 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/tooltip',
     link: '/tooltip',
     name: '03. 툴팁',
-    children: null,
+    children: Tooltips,
   },
   '/textBox': {
     key: '/textBox',
     link: '/textBox',
     name: '04. 반응형 텍스트박스',
-    children: null,
+    children: TextBoxes,
   },
   '/lineClamp': {
     key: '/lineClamp',
     link: '/lineClamp',
     name: '05. 여러줄 말줄임',
-    children: null,
+    children: LineClamps,
   },
   '/lazyLoading': {
     key: '/lazyLoading',
