@@ -1,4 +1,5 @@
 import Accordions from './components/accordion';
+import LazyLoad1 from './components/lazyLoading/1_r';
 import LineClamps from './components/lineClamp';
 import TabMenus from './components/tabMenu';
 import TextBoxes from './components/textBox';
@@ -109,13 +110,13 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/lazyLoading',
     link: '/lazyLoading/1_r',
     name: '06. 지연 로딩',
-    children: null,
+    children: ['/lazyLoading/1_r'],
   },
   '/lazyLoading/1_r': {
     key: '/lazyLoading/1_r',
     link: '/lazyLoading/1_r',
-    name: 'React1',
-    children: null,
+    name: '1# React',
+    children: LazyLoad1,
   },
   '/lazyLoading/2_v': {
     key: '/lazyLoading/2_v',
