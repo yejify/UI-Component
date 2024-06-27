@@ -1,5 +1,11 @@
+import useIntersectionOserver from '@/hook/useIntersectionObserver';
 import cx from '../cx';
 import data from '../data';
+import { useEffect, useRef } from 'react';
+
+const ioOptions: IntersectionObserverInit = {
+  threshold: 0,
+};
 
 const LazyImage = ({
   src,
@@ -10,6 +16,18 @@ const LazyImage = ({
   width: number;
   height: number;
 }) => {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const { entries, observerRef } = useIntersectionOserver(imgRef, ioOptions);
+
+  useEffect(() => {
+    const isVisible = entries[0]?.isIntersecting;
+
+    if (isVisible) {
+      imgRef.current!.setAttribute('src', src);
+      observerRef.current?.disconnect();
+    }
+  }, [src, entries]);
+
   return <img className={cx('lazy')} width={width} height={height} alt='' />;
 };
 
